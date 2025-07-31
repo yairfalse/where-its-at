@@ -16,6 +16,10 @@ func TestErrors(t *testing.T) {
 			{"ErrInvalidRequest", ErrInvalidRequest, "invalid request"},
 			{"ErrDuplicateArtist", ErrDuplicateArtist, "artist already exists"},
 			{"ErrExternalAPIFailure", ErrExternalAPIFailure, "external API failure"},
+			{"ErrEventNotFound", ErrEventNotFound, "event not found"},
+			{"ErrDuplicateEvent", ErrDuplicateEvent, "event already exists"},
+			{"ErrInvalidLocation", ErrInvalidLocation, "invalid location"},
+			{"ErrRateLimitExceeded", ErrRateLimitExceeded, "rate limit exceeded"},
 		}
 
 		for _, tt := range tests {
