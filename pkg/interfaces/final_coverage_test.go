@@ -36,12 +36,12 @@ func TestArtistService_ExtraScenarios(t *testing.T) {
 		// Create aggregator that returns nil (simulating API failure)
 		aggregator := integrations.NewArtistAggregator(nil, nil)
 		service := NewArtistService(mockRepo, aggregator)
-		
+
 		response, err := service.SearchArtists(context.Background(), "test", 5)
 		if err != nil {
 			t.Fatalf("expected no error, got %v", err)
 		}
-		
+
 		// Should still return the local results
 		if len(response.Artists) != 1 {
 			t.Errorf("expected 1 artist from local, got %d", len(response.Artists))

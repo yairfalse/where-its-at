@@ -14,10 +14,10 @@ import (
 )
 
 type BandsintownClient struct {
-	baseURL      string
-	appID        string
-	httpClient   *http.Client
-	rateLimiter  *rateLimiter
+	baseURL     string
+	appID       string
+	httpClient  *http.Client
+	rateLimiter *rateLimiter
 }
 
 type BandsintownConfig struct {
@@ -72,25 +72,25 @@ func NewBandsintownClient(config BandsintownConfig) (*BandsintownClient, error) 
 }
 
 type bandsintownEvent struct {
-	ID           string `json:"id"`
-	ArtistID     string `json:"artist_id"`
-	URL          string `json:"url"`
-	OnSaleDate   string `json:"on_sale_datetime"`
-	DateTime     string `json:"datetime"`
-	Description  string `json:"description"`
-	Venue        bandsintownVenue `json:"venue"`
-	Offers       []bandsintownOffer `json:"offers"`
-	Lineup       []string `json:"lineup"`
+	ID          string             `json:"id"`
+	ArtistID    string             `json:"artist_id"`
+	URL         string             `json:"url"`
+	OnSaleDate  string             `json:"on_sale_datetime"`
+	DateTime    string             `json:"datetime"`
+	Description string             `json:"description"`
+	Venue       bandsintownVenue   `json:"venue"`
+	Offers      []bandsintownOffer `json:"offers"`
+	Lineup      []string           `json:"lineup"`
 }
 
 type bandsintownVenue struct {
-	ID        string  `json:"id"`
-	Name      string  `json:"name"`
-	Latitude  string  `json:"latitude"`
-	Longitude string  `json:"longitude"`
-	City      string  `json:"city"`
-	Region    string  `json:"region"`
-	Country   string  `json:"country"`
+	ID        string `json:"id"`
+	Name      string `json:"name"`
+	Latitude  string `json:"latitude"`
+	Longitude string `json:"longitude"`
+	City      string `json:"city"`
+	Region    string `json:"region"`
+	Country   string `json:"country"`
 }
 
 type bandsintownOffer struct {

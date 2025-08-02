@@ -28,7 +28,7 @@ func TestArtistHandler_EdgeCases(t *testing.T) {
 		if handler == nil {
 			t.Fatal("expected handler, got nil")
 		}
-		
+
 		// Test handler methods are accessible
 		if handler.service == nil {
 			t.Error("expected service to be set")
@@ -48,12 +48,12 @@ func TestArtistService_ExternalAPIIntegration(t *testing.T) {
 
 		// Create service without aggregator to test local-only path
 		service := NewArtistService(mockRepo, nil)
-		
+
 		response, err := service.SearchArtists(context.Background(), "test", 10)
 		if err != nil {
 			t.Fatalf("expected no error, got %v", err)
 		}
-		
+
 		if len(response.Artists) != 1 {
 			t.Errorf("expected 1 artist, got %d", len(response.Artists))
 		}
@@ -82,7 +82,7 @@ func TestArtistHandler_MoreCoverage(t *testing.T) {
 		rr := httptest.NewRecorder()
 
 		router.ServeHTTP(rr, req)
-		
+
 		if rr.Code != http.StatusOK {
 			t.Errorf("expected status 200, got %d", rr.Code)
 		}
@@ -103,7 +103,7 @@ func TestArtistHandler_MoreCoverage(t *testing.T) {
 		rr := httptest.NewRecorder()
 
 		router.ServeHTTP(rr, req)
-		
+
 		if rr.Code != http.StatusBadRequest {
 			t.Errorf("expected status 400, got %d", rr.Code)
 		}
@@ -124,7 +124,7 @@ func TestArtistHandler_MoreCoverage(t *testing.T) {
 		rr := httptest.NewRecorder()
 
 		router.ServeHTTP(rr, req)
-		
+
 		if rr.Code != http.StatusServiceUnavailable {
 			t.Errorf("expected status 503, got %d", rr.Code)
 		}
@@ -149,7 +149,7 @@ func TestArtistHandler_MoreCoverage(t *testing.T) {
 		rr := httptest.NewRecorder()
 
 		router.ServeHTTP(rr, req)
-		
+
 		if rr.Code != http.StatusBadRequest {
 			t.Errorf("expected status 400, got %d", rr.Code)
 		}
@@ -170,7 +170,7 @@ func TestArtistHandler_MoreCoverage(t *testing.T) {
 		rr := httptest.NewRecorder()
 
 		router.ServeHTTP(rr, req)
-		
+
 		if rr.Code != http.StatusInternalServerError {
 			t.Errorf("expected status 500, got %d", rr.Code)
 		}
@@ -195,7 +195,7 @@ func TestArtistHandler_MoreCoverage(t *testing.T) {
 		rr := httptest.NewRecorder()
 
 		router.ServeHTTP(rr, req)
-		
+
 		if rr.Code != http.StatusInternalServerError {
 			t.Errorf("expected status 500, got %d", rr.Code)
 		}
@@ -214,17 +214,17 @@ func TestArtistService_ValidationEdgeCases(t *testing.T) {
 		}
 
 		service := NewArtistService(mockRepo, nil)
-		
+
 		longID := ""
 		for i := 0; i < 150; i++ {
 			longID += "a"
 		}
-		
+
 		artist := &domain.Artist{
 			ID:   longID,
 			Name: "Test Artist",
 		}
-		
+
 		err := service.SaveArtist(context.Background(), artist)
 		if err == nil {
 			t.Error("expected error for long ID")
