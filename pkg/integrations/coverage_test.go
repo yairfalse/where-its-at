@@ -52,7 +52,7 @@ func TestSpotifyClient_TokenExpiredScenario(t *testing.T) {
 func TestLastFMClient_ErrorScenarios(t *testing.T) {
 	mockServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		method := r.URL.Query().Get("method")
-		
+
 		switch method {
 		case "artist.search":
 			// Return server error
@@ -101,7 +101,7 @@ func TestAggregator_SingleSourceFailure(t *testing.T) {
 
 	ctx := context.Background()
 	results, err := aggregator.SearchArtists(ctx, "test", 10)
-	
+
 	// Should get results even if one source fails
 	if err != nil && len(results) == 0 {
 		t.Log("Aggregator handled single source failure")

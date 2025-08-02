@@ -60,10 +60,10 @@ func TestBandsintownClient_SearchEvents(t *testing.T) {
 		w.Header().Set("Content-Type", "application/json")
 		events := []bandsintownEvent{
 			{
-				ID:       "bt-123",
-				ArtistID: "artist-123",
-				URL:      "https://example.com/event",
-				DateTime: time.Now().Add(7 * 24 * time.Hour).Format(time.RFC3339),
+				ID:          "bt-123",
+				ArtistID:    "artist-123",
+				URL:         "https://example.com/event",
+				DateTime:    time.Now().Add(7 * 24 * time.Hour).Format(time.RFC3339),
 				Description: "Test Concert",
 				Venue: bandsintownVenue{
 					ID:        "venue-123",
@@ -180,7 +180,7 @@ func TestBandsintownClient_GetArtistEvents(t *testing.T) {
 func TestRateLimiter(t *testing.T) {
 	t.Run("allows requests within limit", func(t *testing.T) {
 		limiter := newRateLimiter(5)
-		
+
 		for i := 0; i < 5; i++ {
 			err := limiter.Allow()
 			if err != nil {
@@ -191,10 +191,10 @@ func TestRateLimiter(t *testing.T) {
 
 	t.Run("blocks requests over limit", func(t *testing.T) {
 		limiter := newRateLimiter(2)
-		
+
 		limiter.Allow()
 		limiter.Allow()
-		
+
 		err := limiter.Allow()
 		if err != domain.ErrRateLimitExceeded {
 			t.Errorf("expected ErrRateLimitExceeded, got %v", err)
@@ -203,12 +203,12 @@ func TestRateLimiter(t *testing.T) {
 
 	t.Run("resets after 24 hours", func(t *testing.T) {
 		limiter := newRateLimiter(1)
-		
+
 		limiter.Allow()
-		
+
 		// Manually set window start to 25 hours ago
 		limiter.windowStart = time.Now().Add(-25 * time.Hour)
-		
+
 		err := limiter.Allow()
 		if err != nil {
 			t.Errorf("expected request to be allowed after reset, got %v", err)

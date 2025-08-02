@@ -9,7 +9,7 @@ func TestEvent(t *testing.T) {
 	t.Run("Event struct creation", func(t *testing.T) {
 		now := time.Now()
 		onSaleDate := now.Add(24 * time.Hour)
-		
+
 		event := Event{
 			ID:         "test-123",
 			ArtistID:   "artist-456",

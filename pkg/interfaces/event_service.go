@@ -11,8 +11,8 @@ import (
 )
 
 type EventService struct {
-	repository       domain.EventRepository
-	artistRepository domain.ArtistRepository
+	repository        domain.EventRepository
+	artistRepository  domain.ArtistRepository
 	bandsintownClient *integrations.BandsintownClient
 }
 
@@ -198,9 +198,9 @@ func (s *EventService) filterByLocation(events []domain.Event, location string, 
 	locationLower := strings.ToLower(location)
 
 	for _, event := range events {
-		venueLocation := strings.ToLower(fmt.Sprintf("%s, %s, %s", 
+		venueLocation := strings.ToLower(fmt.Sprintf("%s, %s, %s",
 			event.Venue.City, event.Venue.Region, event.Venue.Country))
-		
+
 		if strings.Contains(venueLocation, locationLower) {
 			filtered = append(filtered, event)
 		}
