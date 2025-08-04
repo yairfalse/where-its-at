@@ -1,18 +1,35 @@
-# Two Turntables and a Microphone 🎵
+# Where It's At
 
-*"Where it's at!"* - A personal gig finder that actually finds the good shows.
+Two turntables and a microphone.
 
-## What it does
-- Save your favorite artists
-- Set your location 
-- Find shows near you from everywhere (APIs + scraping)
-- No bullshit, just music
+## What's Working
 
-## How to run
-1. `git clone` this repo
-2. `go build`
-3. `./two-turntables-and-a-microphone`
-4. Open http://localhost:8080
-5. Find shows, be happy
+Pulls music and events from multiple sources:
+- Spotify, Apple Music, YouTube Music, Deezer, SoundCloud
+- Songkick, Ticketmaster, Eventbrite, Setlist.fm
+- Resident Advisor and Bandcamp scrapers
 
-Built to prove that useful apps don't have to be complex.
+## What's Not
+
+- No config management yet
+- No database 
+- No frontend
+- Not wired up to actually run
+
+## API
+
+```
+GET /api/search/artists?q=query
+GET /api/search/events?artist=name  
+GET /api/search/events/location?city=Berlin
+GET /api/sources
+```
+
+## Run It (eventually)
+
+```bash
+go build ./cmd/where-its-at
+./where-its-at
+```
+
+That was a good drum break.
