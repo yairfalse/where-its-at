@@ -11,10 +11,14 @@ Pulls music and events from multiple sources:
 
 ## What's Not
 
-- No config management yet
-- No database 
 - No frontend
-- Not wired up to actually run
+- Not fully wired up yet
+
+## What's Working (Backend)
+
+- SQLite database with full CRUD operations
+- Config management (supports JSON config + env vars)
+- Independent module architecture (domain, collectors, integrations, interfaces, config)
 
 ## API
 

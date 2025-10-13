@@ -1,0 +1,19 @@
+# build
+bin/
+*.exe
+
+# config
+config.json
+.env
+*.p8
+
+# coverage
+*.out
+coverage.html
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
