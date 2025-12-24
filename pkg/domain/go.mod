@@ -1,3 +1,5 @@
 module github.com/yair/where-its-at/pkg/domain
 
-go 1.21
+go 1.23.0
+
+toolchain go1.24.5

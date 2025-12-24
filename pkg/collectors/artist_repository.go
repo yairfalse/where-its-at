@@ -61,7 +61,8 @@ func (r *ArtistRepository) Create(ctx context.Context, artist *domain.Artist) er
 	VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
 	`
 
-	genres := strings.Join(artist.Genres, ",")
+	// Use pipe separator to avoid issues with commas in genre names
+	genres := strings.Join(artist.Genres, "|")
 	now := time.Now()
 	artist.CreatedAt = now
 	artist.UpdatedAt = now
@@ -118,7 +119,7 @@ func (r *ArtistRepository) GetByID(ctx context.Context, id string) (*domain.Arti
 	}
 
 	if genres.Valid && genres.String != "" {
-		artist.Genres = strings.Split(genres.String, ",")
+		artist.Genres = strings.Split(genres.String, "|")
 	}
 
 	return &artist, nil
@@ -166,7 +167,7 @@ func (r *ArtistRepository) GetByExternalID(ctx context.Context, externalID strin
 	}
 
 	if genres.Valid && genres.String != "" {
-		artist.Genres = strings.Split(genres.String, ",")
+		artist.Genres = strings.Split(genres.String, "|")
 	}
 
 	return &artist, nil
@@ -215,7 +216,7 @@ func (r *ArtistRepository) Search(ctx context.Context, query string, limit int) 
 		}
 
 		if genres.Valid && genres.String != "" {
-			artist.Genres = strings.Split(genres.String, ",")
+			artist.Genres = strings.Split(genres.String, "|")
 		}
 
 		artists = append(artists, artist)
@@ -239,7 +240,8 @@ func (r *ArtistRepository) Update(ctx context.Context, artist *domain.Artist) er
 	WHERE id = ?
 	`
 
-	genres := strings.Join(artist.Genres, ",")
+	// Use pipe separator to avoid issues with commas in genre names
+	genres := strings.Join(artist.Genres, "|")
 	artist.UpdatedAt = time.Now()
 
 	result, err := r.db.ExecContext(ctx, query,

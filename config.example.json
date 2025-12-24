@@ -1,0 +1,61 @@
+{
+  "server": {
+    "port": "8080",
+    "read_timeout_seconds": 30,
+    "write_timeout_seconds": 30
+  },
+  "database": {
+    "host": "localhost",
+    "port": 5432,
+    "user": "whereitsatuser",
+    "password": "your-password-here",
+    "database": "whereitsatdb",
+    "ssl_mode": "disable"
+  },
+  "apis": {
+    "spotify": {
+      "client_id": "your-spotify-client-id",
+      "client_secret": "your-spotify-client-secret",
+      "redirect_uri": "http://localhost:8080/callback/spotify"
+    },
+    "apple_music": {
+      "team_id": "your-apple-team-id",
+      "key_id": "your-apple-key-id",
+      "private_key": "path/to/apple-music-private-key.p8",
+      "country_code": "US"
+    },
+    "youtube": {
+      "api_key": "your-youtube-api-key"
+    },
+    "musicbrainz": {
+      "user_agent": "WhereItsAt/1.0 (https://github.com/yairfalse/where-its-at)"
+    },
+    "deezer": {
+      "app_id": "your-deezer-app-id",
+      "app_secret": "your-deezer-app-secret"
+    },
+    "soundcloud": {
+      "client_id": "your-soundcloud-client-id"
+    },
+    "songkick": {
+      "api_key": "your-songkick-api-key"
+    },
+    "ticketmaster": {
+      "api_key": "your-ticketmaster-api-key"
+    },
+    "eventbrite": {
+      "token": "your-eventbrite-private-token"
+    },
+    "setlistfm": {
+      "api_key": "your-setlistfm-api-key"
+    }
+  },
+  "scrapers": {
+    "user_agent": "Mozilla/5.0 (compatible; WhereItsAt/1.0)",
+    "rate_limit_seconds": 2,
+    "timeout_seconds": 30
+  },
+  "cache": {
+    "event_cache_duration_hours": 24
+  }
+}

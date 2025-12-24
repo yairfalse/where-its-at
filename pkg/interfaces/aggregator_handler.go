@@ -135,14 +135,14 @@ func (h *AggregatorHandler) GetSources(w http.ResponseWriter, r *http.Request) {
 
 func (h *AggregatorHandler) writeJSONResponse(w http.ResponseWriter, status int, data interface{}) {
 	w.Header().Set("Content-Type", "application/json")
-	
+
 	// Try to encode first to check for errors before writing status
 	encoded, err := json.Marshal(data)
 	if err != nil {
 		http.Error(w, "failed to encode response", http.StatusInternalServerError)
 		return
 	}
-	
+
 	w.WriteHeader(status)
 	w.Write(encoded)
 }
